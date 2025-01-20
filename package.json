@@ -1,6 +1,6 @@
 {
   "name": "libsql-orm",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "ORM wrapper for the libsql package to interact with sqlite3 database",
   "main": "index.js",
   "scripts": {

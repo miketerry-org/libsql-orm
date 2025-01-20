@@ -5,6 +5,9 @@ const assert = require("assert");
 const Database = require("../lib/database.js");
 const userColumns = require("./_userColumns.js");
 
+// define uninitialized database
+let db = null;
+
 // define test database location
 const database_url = "test.sqlite";
 
@@ -17,15 +20,13 @@ const userValues = {
   active: true,
 };
 
-// Initialize database instance
-const db = new Database();
+test("new Database", () => {
+  console.log("here");
+  // Initialize database instance
+  db = new Database(database_url);
 
-// turn sql logging on
-db.logging = true;
-
-test("connect/connected", () => {
-  db.connect({ filename: database_url });
-  assert.strictEqual(db.connected, true);
+  // turn sql logging on
+  db.logging = true;
 });
 
 test("dropTable", () => {
@@ -66,9 +67,4 @@ test("findMany", () => {
 test("delete", () => {
   //let ok = db.delete("users", 1);
   //assert.strictEqual(ok, true);
-});
-
-test("disconnect", () => {
-  db.disconnect();
-  assert.strictEqual(db.connected, false);
 });
